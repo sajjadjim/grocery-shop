@@ -138,7 +138,7 @@ const Items = ({ productItems }) => {
       <h2 className="text-2xl font-semibold">All Products List :</h2>
       {/* Product ADD  */}
       {
-        <Cart_Items
+      <Cart_Items
         cartItems={cartItems}
         removeFromCartProducts={removeFromCartProducts}
       ></Cart_Items>

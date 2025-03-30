@@ -1,7 +1,13 @@
 import React from 'react';
 import './item.css'
+import { useState } from 'react';
 const Item = ({product ,handleCartItems}) => {
 
+    const [viewCart , setViewCart] = useState(false)
+const handleBuyButton = () =>{
+    handleCartItems(product)
+   setViewCart(true)
+}
     return (
         <div className='product'>
             <div className='product-container'>
@@ -15,7 +21,7 @@ const Item = ({product ,handleCartItems}) => {
                 <img style={{height:'100px', width:'auto', borderRadius:'10px'}} src={product.image} alt='Picture Loading...'></img>
             </div>
             </div>
-            <button onClick={()=> handleCartItems(product)}>Buy Now</button>
+            <button onClick={handleBuyButton}>{ viewCart? 'View Cart' :'Buy Now'}</button>
         </div>
     );
 };
