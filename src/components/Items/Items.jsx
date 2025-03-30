@@ -9,7 +9,7 @@ const Items = ({ productItems }) => {
   const [cartItems, setCartItems] = useState([]);
   const [totalCartAmount, setTotalCartAmount] = useState(0);
 
-  // Product ADD To the Cart------------------------------------------------------
+  // Product ADD To the Cart--------------------------------------------------------
   const handleCartItems = (product) => {
     const newCartItems = [...cartItems, product];
     setCartItems(newCartItems);
