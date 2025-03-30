@@ -1,9 +1,7 @@
 import React, { use, useEffect, useState } from "react";
 import Item from "../item/Item";
 import "./items.css";
-import { addLocalStore } from "../utilites/LocalStore";
-import { getItems } from "../../../../bottle/src/components/utilities/localStorage";
-import Cart from "../../../../bottle/src/components/cart/cart";
+import { addLocalStore ,getLocalStore } from "../utilites/LocalStore";
 import Cart_Items from "../Cart Items/Cart_Items";
 const Items = ({ productItems }) => {
   const products = use(productItems);
@@ -29,7 +27,7 @@ const Items = ({ productItems }) => {
 
   // Get From Local storage-------------------------------------------------------
   useEffect(() => {
-    const getCartItems = getItems();
+    const getCartItems = getLocalStore();
     const storeCartItems = [];
 
     for (let id of getCartItems) {
