@@ -1,14 +1,14 @@
 import React, { use, useEffect, useState } from "react";
 import Item from "../item/Item";
 import "./items.css";
-import { addLocalStore ,getLocalStore } from "../utilites/LocalStore";
+import { addLocalStore, getLocalStore } from "../utilites/LocalStore";
 import Cart_Items from "../Cart Items/Cart_Items";
 const Items = ({ productItems }) => {
   const products = use(productItems);
 
   const [cartItems, setCartItems] = useState([]);
   const [totalCartAmount, setTotalCartAmount] = useState(0);
-
+  console.log(cartItems);
   // Product ADD To the Cart--------------------------------------------------------
   const handleCartItems = (product) => {
     const newCartItems = [...cartItems, product];
@@ -98,9 +98,39 @@ const Items = ({ productItems }) => {
                 </span>
                 <span className="text-info">Subtotal: ${totalCartAmount}</span>
                 <div className="card-actions">
-                  <button className="btn btn-primary btn-block">
-                    View cart
-                  </button>
+                  <div>
+                    <button
+                      className="btn"
+                      onClick={() =>
+                        document.getElementById("my_modal_5").showModal()
+                      }
+                    >
+                      View Cart
+                    </button>
+                    <dialog
+                      id="my_modal_5"
+                      className="modal modal-bottom sm:modal-middle"
+                    >
+                      <div className="modal-box">
+                        <h3 className="font-bold text-lg">Grocery Shop</h3>
+                        <p className="py-4">
+                          Total Amount : ${totalCartAmount} <br></br>
+                          {
+                            <Cart_Items
+                              cartItems={cartItems}
+                              removeFromCartProducts={removeFromCartProducts}
+                            ></Cart_Items>
+                          }
+                        </p>
+                        <div className="modal-action">
+                          <form method="dialog">
+                            {/* if there is a button in form, it will close the modal */}
+                            <button className="btn">Cart</button>
+                          </form>
+                        </div>
+                      </div>
+                    </dialog>
+                  </div>
                 </div>
               </div>
             </div>
@@ -120,12 +150,6 @@ const Items = ({ productItems }) => {
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
             >
               <li>
-                <a className="justify-between">
-                  Profile
-                  <span className="badge">New</span>
-                </a>
-              </li>
-              <li>
                 <a>Settings</a>
               </li>
               <li>
@@ -137,12 +161,12 @@ const Items = ({ productItems }) => {
       </div>
       <h2 className="text-2xl font-semibold">All Products List :</h2>
       {/* Product ADD  */}
-      {
-      <Cart_Items
-        cartItems={cartItems}
-        removeFromCartProducts={removeFromCartProducts}
-      ></Cart_Items>
-      }
+      {/* {
+        <Cart_Items
+          cartItems={cartItems}
+          removeFromCartProducts={removeFromCartProducts}
+        ></Cart_Items>
+      } */}
       <div className=" grid md:grid-cols-4 grid-cols-2 md:gap-5 gap-1">
         {products.map((product) => (
           <Item
