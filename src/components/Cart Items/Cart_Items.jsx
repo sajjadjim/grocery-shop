@@ -8,7 +8,7 @@ const Cart_Items = ({ cartItems, removeFromCartProducts }) => {
       <div className="grid md:grid-cols-10 grid-cols-5">
         {cartItems.map((product) => (
           <div>
-            <img key={product.id} src={product.image}></img>
+            <img className="h-[100px] w-auto" key={product.id} src={product.image}></img>
             <button
               onClick={() => removeFromCartProducts(product.id)}
               style={{ backgroundColor: "white", color: "black" }}
