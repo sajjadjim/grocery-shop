@@ -1,0 +1,10 @@
+.product-container{
+    display: flex;
+    /* align-items: center; */
+}
+.product{
+    border: 2px solid rgb(229, 226, 226);
+    margin: 20px 0px 10px 0px;
+    padding: 10px;
+    border-radius: 15px;
+}
