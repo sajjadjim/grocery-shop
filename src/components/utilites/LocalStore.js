@@ -29,4 +29,14 @@ const getFromLocalStorage = () =>{
         // This line send the data to store Local Storage 
         saveDataToLocalStorage(newCart)
     }
-    export {addItemsToLocalstorage as addLocalStore , getFromLocalStorage as getLocalStore}
+
+    const removeFromLocalStorage = (id) =>{
+      const getCartItems = getFromLocalStorage()
+      const remainingCartItems =getCartItems.filter(itemsCart => itemsCart !== id)
+      saveDataToLocalStorage(remainingCartItems)
+    } 
+
+    export {addItemsToLocalstorage as addLocalStore , getFromLocalStorage as getLocalStore
+      ,
+      removeFromLocalStorage as removeCart
+    }

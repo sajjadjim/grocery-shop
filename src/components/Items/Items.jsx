@@ -1,7 +1,7 @@
 import React, { use, useEffect, useState } from "react";
 import Item from "../item/Item";
 import "./items.css";
-import { addLocalStore, getLocalStore } from "../utilites/LocalStore";
+import { addLocalStore, getLocalStore , removeCart } from "../utilites/LocalStore";
 import Cart_Items from "../Cart Items/Cart_Items";
 const Items = ({ productItems }) => {
   const products = use(productItems);
@@ -51,6 +51,8 @@ const Items = ({ productItems }) => {
       (products) => products.id !== id
     );
     setCartItems(remainingCartProducts);
+    //Here teh product cart from remove code write 
+    removeCart(id)
   };
 
   return (
@@ -161,12 +163,12 @@ const Items = ({ productItems }) => {
       </div>
       <h2 className="text-2xl font-semibold">All Products List :</h2>
       {/* Product ADD  */}
-      {/* {
+      {
         <Cart_Items
           cartItems={cartItems}
           removeFromCartProducts={removeFromCartProducts}
         ></Cart_Items>
-      } */}
+      }
       <div className=" grid md:grid-cols-4 grid-cols-2 md:gap-5 gap-1">
         {products.map((product) => (
           <Item
